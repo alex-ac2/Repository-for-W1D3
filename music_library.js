@@ -121,14 +121,20 @@ var addTrack = function (name, artist, album) {
 };
 
 addTrack('test', 'test_artist', 'test album');
+addTrack('Posh', 'Beautiful', 'Pair Programming!');
 console.log(library.tracks);
+
 // adds a playlist to the library
 
 var addPlaylist = function (name) {
+  let libraryPlaylist = library.playlists; 
+  let newId = uid();
+  console.log(newId);
+  libraryPlaylist[newId] = {id: newId, name: name, tracks: []};
+ };
 
-};
-
-
+addPlaylist('running');
+console.log(library.playlists);
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
