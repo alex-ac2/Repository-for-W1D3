@@ -20,8 +20,23 @@ var library = {
                       name: "Other Playlist",
                       tracks: ["t03"]
                     }
-             }
+             },
+  addPlayList: function(name) {
+    console.log("function addPlayList was executed");
+    let libraryPlaylist = this.playlists; 
+    let newId = this.uid();
+    //console.log(newId);
+    libraryPlaylist[newId] = {id: newId, name: name, tracks: []};
+   },
+  uid: function() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+
 };
+
+library.addPlayList('running');
+console.log(library.playlists);
 
 // FUNCTIONS TO IMPLEMENT:
 
@@ -110,9 +125,9 @@ var addTrackToPlaylist = function (trackId, playlistId) {
 // generates a unique id
 // (use this for addTrack and addPlaylist)
 
-var uid = function() {
-  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-};
+//var uid = function() {
+//  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+//};
 
 
 // adds a track to the library
@@ -138,15 +153,15 @@ console.log(library.tracks);
 
 // adds a playlist to the library
 
-var addPlaylist = function (name) {
-  let libraryPlaylist = library.playlists; 
-  let newId = uid();
-  console.log(newId);
-  libraryPlaylist[newId] = {id: newId, name: name, tracks: []};
- };
+//var addPlaylist = function (name) {
+//  let libraryPlaylist = library.playlists; 
+//  let newId = uid();
+//  console.log(newId);
+//  libraryPlaylist[newId] = {id: newId, name: name, tracks: []};
+//};
 
-addPlaylist('running');
-console.log(library.playlists);
+//addPlaylist('running');
+//console.log(library.playlists);
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
