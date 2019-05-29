@@ -106,10 +106,22 @@ var uid = function() {
 // adds a track to the library
 
 var addTrack = function (name, artist, album) {
+  let libraryTrackList = library.tracks;
+  let currentTotalTracks = Object.keys(libraryTrackList).length;
+  let newTotalTracks = currentTotalTracks + 1;
+  let newId = "";
   
+  if (newTotalTracks < 10) {
+    newId = "t0" + newTotalTracks.toString(10);
+  } else {
+    newId = "t" + currentTotalTracks.toString(10);
+  } 
+  console.log(newId);
+  libraryTrackList[newId] = {id: newId, name: name, artist: artist, album: album};
 };
 
-
+addTrack('test', 'test_artist', 'test album');
+console.log(library.tracks);
 // adds a playlist to the library
 
 var addPlaylist = function (name) {
