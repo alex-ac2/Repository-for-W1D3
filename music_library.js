@@ -78,8 +78,7 @@ var printPlaylist = function (playlistId) {
   var libraryPlaylist = library.playlists;
   let playlistObject = libraryPlaylist[playlistId];
   console.log(playlistObject.id + ": " + playlistObject.name + " - " +
-    playlistObject.tracks.length + " tracks");
-
+  playlistObject.tracks.length + " tracks");
 
   printTracks(playlistObject.tracks);
 
@@ -91,7 +90,20 @@ printPlaylist("p01");
 // adds an existing track to an existing playlist
 
 var addTrackToPlaylist = function (trackId, playlistId) {
+ let libraryTracks = library.tracks;
+  let libraryPlaylist = library.playlists;
+  let playlistObject = libraryPlaylist[playlistId];
 
+  for (let trackItem in libraryTracks) {
+    let trackObject = libraryTracks[trackItem];
+      if (trackId === trackObject.id) {
+        playlistObject.tracks.push(trackId);
+        // console.log(playlistObject);
+      } else {
+        console.log("Track ID does not exist");
+      }
+
+  }
 };
 
 
